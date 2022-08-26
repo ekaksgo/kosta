@@ -1,9 +1,10 @@
-#include "circlar.h"
+#include "circular.h"
 
 
-void fristinsert(node_h *cl, char* x)
+void firstinsert(list_h *cl, char* x)
 {
-	node* new, *temp;
+	node* new; 
+	node* temp;
 	new = (node*)malloc(sizeof(node));
 	strcpy(new -> data,x);
 	if (cl->head == NULL)//공백 리스트
@@ -16,12 +17,12 @@ void fristinsert(node_h *cl, char* x)
 		temp = cl->head;
 		while(temp ->link == cl -> head)
 			temp = temp -> link;
-		new->link = temp -> link;
-		temp ->link = new;
+			new -> link = temp -> link;
+			temp -> link = new;
 		cl ->head = new;
 	}
 }
-void midinsert(node_h *cl, node* pre, char* x)
+void midinsert(list_h *cl, node* pre, char* x)
 {
 	node* new;
 	new = (node*)malloc(sizeof(node));
@@ -36,9 +37,9 @@ void midinsert(node_h *cl, node* pre, char* x)
 		pre -> link = new;
 	}	
 }
-void fininsert(node_h* cl, node* old)
+void fininsert(list_h* cl, node* old)
 {
-	node* new;
+	node* pre;
 	if(cl -> head ==NULL) return;
 	if(cl->head ->link == cl ->head){
 		free(cl->head);
@@ -46,12 +47,12 @@ void fininsert(node_h* cl, node* old)
 		return;
 	}
 
-	else if (pld ==NULL)
+	else if (old ==NULL)
 		return;
 	else
 	{
 		pre =cl -> head;
-		wheile (pre ->link != old)
+		while (pre ->link != old)
 		{
 			pre = pre -> link;
 		}

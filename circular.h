@@ -1,4 +1,5 @@
-include <stdio.h>
+#include <stdio.h>
+#include <string.h>
 
 typedef struct Listnode{
 	char data[4];
@@ -6,8 +7,9 @@ typedef struct Listnode{
 }node;
 typedef struct{
 	node *head;
-}node_h;
+}list_h;
 
-void insert(node_h *cl, char* x); 
-void midinsert(node_h *cl, node* pre, char* x);
-void fininsert(node_h* cl, node* old);
+//list_h* createlist_h(void);
+void firstinsert(list_h *cl, char* x); 
+void midinsert(list_h *cl, node* pre, char* x);
+void fininsert(list_h* cl, node* old);
