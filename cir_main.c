@@ -5,7 +5,7 @@ int main(void)
 	list_h* cl;
 	node* p;
 
-	cl = createlist_h;
+	cl = createlist_h();
 
 	printf("1. 원형 리스트 생성하기\n");
 	printlist(cl);
