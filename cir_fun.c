@@ -1,5 +1,35 @@
+#include <stdio.h>
+#include <string.h>
 #include "circular.h"
 
+list_h* createlist_h(void)
+{
+	list_h* cl;
+	cl = (list_h*)malloc(sizeof(list_h));
+	cl -> head = NULL;
+	return cl;
+}
+
+void printlist(list_h* cl)
+{
+	node* p;
+	printf("cl =(");
+	p= cl -> head;
+	if (p ==NULL)
+	{
+		printf(")");
+	}
+	do
+	{
+		printf("%s", p->data);
+		p = p ->link;
+		if(p != cl -> head)
+		{
+			printf(", ");
+		}
+	}while(p != cl -> head);
+	printf("\n");
+}
 
 void firstinsert(list_h *cl, char* x)
 {
@@ -37,7 +67,7 @@ void midinsert(list_h *cl, node* pre, char* x)
 		pre -> link = new;
 	}	
 }
-void fininsert(list_h* cl, node* old)
+void deletnode(list_h* cl, node* old)
 {
 	node* pre;
 	if(cl -> head ==NULL) return;
@@ -62,3 +92,53 @@ void fininsert(list_h* cl, node* old)
 		free(old);
 	}
 }
+node* search(list_h cl, char* x)
+{
+	node* temp;
+	temp = cl -> head;
+
+	if(temp==NULL) 
+		{
+			return NULL;
+		}
+	do
+	{
+		if (strcmp(temp->data,x)==0)
+			{
+				return temp;
+			}
+		else
+			{
+				temp = temp -> link;
+			}
+
+	} while( temp != cl->head);
+	
+	return NULL;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
